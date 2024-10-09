@@ -4,20 +4,21 @@
 
 //getComputerChoice function will randomly return one of the following string values: “rock”, “paper” or “scissors”.
 function getComputerChoice() {
-    //let gameValue = ['rock', 'paper', 'scissors'];
-    let randomString = Math.floor(Math.random() * 3);
-    
-    let choice;
-    if (randomString === 0) {
-        return choice = 'rock';
-    } else if (randomString === 1){
-       return choice = 'paper';
-    } else if (randomString === 2) {
-       return choice = 'scissors';
+    let randomString = Math.floor(Math.random() * 3) + 1;
+    let choice;    
+
+    if (randomString === 1) {
+         choice = 'rock';
+    } else if (randomString === 2){
+         choice = 'paper';
     } else {
-        return choice;
-    }
+         choice = 'scissors';
+    } 
+      
+    return choice;
+    
 }
+
 
 
 
@@ -29,8 +30,8 @@ function getHumanChoice() {
 
 
 
+//playrounds function
 function playRound(humanChoice, computerChoice) {
-
       if (humanChoice === computerChoice) {
         alert('No winner! ' + 'you chose ' + humanChoice + ', computer chose ' + computerChoice + '. ' + 'continue playing');
         console.log('No winner! ' + 'you chose ' + humanChoice + ', computer chose ' + computerChoice + '. ' + 'continue playing');
@@ -43,22 +44,19 @@ function playRound(humanChoice, computerChoice) {
         console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
         computerScore += 1;
       }
-     console.log('Human Score: ' + humanScore + ', ' + 'Computer Score: ' + computerScore );
+
+      console.log('Human Score: ' + humanScore + ', ' + 'Computer Score: ' + computerScore );
 
 }
 
 
 
-
-
-
-
+//palyGame function
 function playGame() {
 
     for(let i = 1; i < 6; i++){
         alert(`Round: ${i} `)
-        playRound(getHumanChoice(), getComputerChoice());
-        
+        playRound(getHumanChoice(), getComputerChoice()); 
     }
 
     console.log('Game Over!');
@@ -67,7 +65,6 @@ function playGame() {
     computer score: ${computerScore}
     `);
 }
-
 
 playGame();
 
