@@ -1,5 +1,21 @@
+ const buttons = document.querySelectorAll('button')
+ const resultContainer = document.querySelector('.result-container');
+ const resultPara = document.createElement('p');
+ const scorePara = document.createElement('p');
+ resultContainer.appendChild(resultPara);
+ resultContainer.appendChild(scorePara)
+
+
+ //select each button
+ buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+       playRound(button.id, getComputerChoice());       
+    })
+ })
+
+
  //Players score variable
- let humanScore = 0;
+ let playerScore = 0;
  let computerScore = 0;
 
 //getComputerChoice function will randomly return one of the following string values: “rock”, “paper” or “scissors”.
@@ -21,38 +37,40 @@ function getComputerChoice() {
 
 
 
-
-//getHumanChoice function will return one of the valid choices depending on what the user inputs.
-function getHumanChoice() {
-    let userInput = prompt('Enter a valid input, i.e "Rock", "Paper" or "Scissors".');
-    return userInput;
-}
-
-
-
 //playrounds function
 function playRound(humanChoice, computerChoice) {
-      if (humanChoice === computerChoice) {
-        alert('No winner! ' + 'you chose ' + humanChoice + ', computer chose ' + computerChoice + '. ' + 'continue playing');
-        console.log('No winner! ' + 'you chose ' + humanChoice + ', computer chose ' + computerChoice + '. ' + 'continue playing');
+    if(playerScore === 5 || computerScore === 5) {
+      resultPara.textContent = `Game Over!
+      Final score:
+      player score: ${playerScore}
+      computer score: ${computerScore}`;
+      scorePara.textContent = '';
+    } else if (humanChoice === computerChoice) {
+        resultPara.textContent = `No winner! you chose ${humanChoice}, computer chose ${computerChoice}. continue playing!`;
+        scorePara.textContent = `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
       } else if ((humanChoice === 'rock' || humanChoice === 'Rock' || humanChoice === 'ROCK') && (computerChoice === 'scissors') ||
         (humanChoice === 'scissors' || humanChoice === 'Scissors' || humanChoice === 'SCISSORS') && (computerChoice === 'paper') ||
         (humanChoice === 'paper' || humanChoice === 'Paper' || humanChoice === 'PAPER') && (computerChoice === 'rock')) {
-        console.log('You win! ' + humanChoice + ' beats ' + computerChoice);
-        humanScore += 1;
+        resultPara.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
+        playerScore += 1;
+        scorePara.textContent = `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
       } else {
-        console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
+        resultPara.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
         computerScore += 1;
+        scorePara.textContent = `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
       }
 
-      console.log('Human Score: ' + humanScore + ', ' + 'Computer Score: ' + computerScore );
 
-}
+      
+    
+};
+
+
 
 
 
 //palyGame function
-function playGame() {
+/*function playGame() {
 
     for(let i = 1; i < 6; i++){
         alert(`Round: ${i} `)
@@ -66,6 +84,6 @@ function playGame() {
     `);
 }
 
-playGame();
+playGame(); */
 
 
