@@ -59,31 +59,5 @@ function playRound(humanChoice, computerChoice) {
         computerScore += 1;
         scorePara.textContent = `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
       }
-
-
-      
-    
 };
-
-
-
-
-
-//palyGame function
-/*function playGame() {
-
-    for(let i = 1; i < 6; i++){
-        alert(`Round: ${i} `)
-        playRound(getHumanChoice(), getComputerChoice()); 
-    }
-
-    console.log('Game Over!');
-    console.log(`The final score is:
-    player score: ${humanScore}
-    computer score: ${computerScore}
-    `);
-}
-
-playGame(); */
-
 
