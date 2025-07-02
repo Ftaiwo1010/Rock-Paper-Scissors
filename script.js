@@ -22,7 +22,7 @@ function getComputerChoice() {
 // Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs.
 
 function getHumanChoice() {
-   let userInput = prompt('Enter your choice to play, "rock, paper, or scissors" ?', 'ROCK');
+   let userInput = prompt('Enter your choice to play, "rock, paper, or scissors" ?', 'PAPER');
    return userInput;
 }
 
@@ -42,24 +42,17 @@ function playGame() {
    let round = 0;
 
    function playRound(humanChoice, computerChoice) {
+      humanChoice = humanChoice.toLowerCase();
+
       if (humanChoice === computerChoice) {
          round++;
          console.log(`Round ${round}`);
          console.log(`You: ${humanChoice} \nComputer: ${computerChoice} `);
          console.log('It a tie.');
       } else if (
-         (humanChoice === 'rock' ||
-          humanChoice === 'Rock' ||
-          humanChoice === 'ROCK' &&
-          computerChoice === 'scissors') ||
-         (humanChoice === 'paper' ||
-          humanChoice === 'Paper' ||
-          humanChoice === 'PAPER' &&
-          computerChoice === 'rock')    ||
-         (humanChoice === 'scissors' ||
-          humanChoice === 'Scissors' ||
-          humanChoice === 'SCISSORS' &&
-          computerChoice === 'paper') 
+         (humanChoice === 'rock' && computerChoice === 'scissors') ||
+         (humanChoice === 'paper' && computerChoice === 'rock')    ||
+         (humanChoice === 'scissors' && computerChoice === 'paper') 
       ) {
          round++;
          humanScore++;
