@@ -7,7 +7,7 @@ let roundText = document.querySelector('.round');
 let playerText1 = document.querySelector('.player1');
 let playerText2 = document.querySelector('.player2');
 let winText = document.querySelector('.wins');
-let HumanScoreText = document.querySelector('.human-score');
+let humanScoreText = document.querySelector('.human-score');
 let computerScoreText = document.querySelector('.computer-score');
 
 
@@ -54,17 +54,17 @@ btnContainer.appendChild(scissorsElement);
 function handleClick(e) {
    e.stopPropagation();
    playRound(e.target.textContent, getComputerChoice());
-   console.log(e.target.textContent);
    checkScore();
 }
 
+// click events for human choice
 rockElement.addEventListener('click', handleClick);
 paperElement.addEventListener('click', handleClick);
 scissorsElement.addEventListener('click', handleClick);
 
 
 
-
+// function that take both human and computer choice to determine the winner
 function playRound(humanChoice, computerChoice) {
 
    if (humanChoice === computerChoice) {
@@ -84,7 +84,7 @@ function playRound(humanChoice, computerChoice) {
       playerText1.textContent =  `You: ${humanChoice}`;
       playerText2.textContent =  `Computer: ${computerChoice}`;
       winText.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
-      HumanScoreText.textContent = `Human score: ${humanScore}`;computerScoreText.textContent = `Computer score: ${computerScore}`;
+      humanScoreText.textContent = `Human score: ${humanScore}`;computerScoreText.textContent = `Computer score: ${computerScore}`;
    } else {
       round++;
       computerScore++;
@@ -92,7 +92,7 @@ function playRound(humanChoice, computerChoice) {
       playerText1.textContent = `You: ${humanChoice}`;
       playerText2.textContent = `Computer: ${computerChoice} `;
       winText.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
-      HumanScoreText.textContent = `Human score: ${humanScore}`;computerScoreText.textContent = `Computer score: ${computerScore}`;
+      humanScoreText.textContent = `Human score: ${humanScore}`;computerScoreText.textContent = `Computer score: ${computerScore}`;
    }
 
 }
@@ -115,7 +115,7 @@ function checkScore() {
    if (humanScore >= 5 || computerScore >= 5) {
        roundText.textContent = 'Game over!';
        winText.textContent = `${humanScore >= 5 ? 'You win!' : 'Computer wins!'}`;
-       HumanScoreText.textContent = `Human score: ${humanScore}`;
+       humanScoreText.textContent = `Human score: ${humanScore}`;
        removeEvent();
        createRestartButton();
    }
@@ -156,7 +156,7 @@ function restartGame() {
    playerText1.textContent = 'You: ';
    playerText2.textContent = 'Computer: ';
    winText.textContent = '';
-   HumanScoreText.textContent = 'Human score: 0';
+   humanScoreText.textContent = 'Human score: 0';
    computerScoreText.textContent = 'Computer score: 0';
 
    rockElement.addEventListener('click', handleClick);
