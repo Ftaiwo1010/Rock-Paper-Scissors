@@ -135,7 +135,7 @@ function createRestartButton() {
    container.appendChild(restBtn);
 
    restBtn.style.width = '200px';
-   restBtn.style.margin = '0 auto';
+   restBtn.style.margin = '20px auto 0';
 
    restBtn.addEventListener('click', () => {
        restartGame();
